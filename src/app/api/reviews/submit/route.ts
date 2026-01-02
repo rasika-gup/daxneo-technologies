@@ -24,10 +24,10 @@ export async function POST(req: NextRequest) {
     // Create review in database (not approved by default)
     const review = await prisma.review.create({
       data: {
-        userId: userId || null, // Allow null for unauthenticated users initially
+        userId: userId || undefined, // Allow undefined for unauthenticated users initially
         userName,
-        userRole: userRole || null,
-        company: company || null,
+        userRole: userRole || undefined,
+        company: company || undefined,
         content,
         rating,
         approved: false, // Reviews need admin approval before being public

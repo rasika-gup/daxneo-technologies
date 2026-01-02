@@ -61,16 +61,31 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-cyan-600 transition-colors duration-300 font-medium relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
+            {navItems.map((item, index) => {
+              if (item.href.startsWith('#')) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-700 hover:text-cyan-600 transition-colors duration-300 font-medium relative group"
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                )
+              } else {
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href as any}
+                    className="text-gray-700 hover:text-cyan-600 transition-colors duration-300 font-medium relative group"
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                )
+              }
+            })}
 
             <Link
               href="#contact"
@@ -99,23 +114,35 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-700 hover:text-cyan-600 py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                return item.href.startsWith('#') ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-700 hover:text-cyan-600 py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href as any}
+                    className="text-gray-700 hover:text-cyan-600 py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              })}
 
-              <Link
+              <a
                 href="#contact"
                 className="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium text-center hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 shadow-lg shadow-cyan-500/20"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Get Started
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

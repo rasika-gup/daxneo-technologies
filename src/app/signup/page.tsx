@@ -62,7 +62,7 @@ const SignupPage = () => {
         setError(signInResult.error);
         setLoading(false);
       } else {
-        router.push('/admin');
+        router.push('/admin' as any);
         router.refresh();
       }
     } catch (error) {

@@ -14,6 +14,7 @@ const LoginPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/admin';
+  const safeCallbackUrl = typeof callbackUrl === 'string' ? callbackUrl : '/admin';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ const LoginPage = () => {
         setError(result.error);
         setLoading(false);
       } else {
-        router.push(callbackUrl);
+        router.push(safeCallbackUrl as any);
         router.refresh();
       }
     } catch (error) {

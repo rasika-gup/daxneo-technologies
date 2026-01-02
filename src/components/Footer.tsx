@@ -82,13 +82,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <Link 
-                    href={link.href} 
-                    className="text-gray-600 hover:text-cyan-600 transition-colors duration-300 flex items-center group"
-                  >
-                    {link.name}
-                    <ArrowUpRight className="ml-1 text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={14} />
-                  </Link>
+                  {link.href.startsWith('#') ? (
+                    <a 
+                      href={link.href}
+                      className="text-gray-600 hover:text-cyan-600 transition-colors duration-300 flex items-center group"
+                    >
+                      {link.name}
+                      <ArrowUpRight className="ml-1 text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={14} />
+                    </a>
+                  ) : (
+                    <Link 
+                      href={link.href as any}
+                      className="text-gray-600 hover:text-cyan-600 transition-colors duration-300 flex items-center group"
+                    >
+                      {link.name}
+                      <ArrowUpRight className="ml-1 text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={14} />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -105,13 +115,13 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <Link 
-                    href="#services" 
+                  <a 
+                    href="#services"
                     className="text-gray-600 hover:text-cyan-600 transition-colors duration-300 flex items-center group"
                   >
                     {service}
                     <ArrowUpRight className="ml-1 text-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={14} />
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
