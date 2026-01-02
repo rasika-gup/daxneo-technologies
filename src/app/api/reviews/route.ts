@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
 
 export const runtime = 'nodejs';
 
@@ -17,10 +17,7 @@ export async function GET(req: NextRequest) {
 
     return new Response(
       JSON.stringify({ reviews }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      }
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (error) {
     console.error('Reviews fetch error:', error);
