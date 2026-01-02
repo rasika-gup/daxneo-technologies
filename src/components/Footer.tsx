@@ -49,7 +49,7 @@ const Footer = () => {
                 <span className="text-white font-bold text-xl">D</span>
               </div>
               <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600">
-                Daxneo
+                Daxneo Technologies
               </span>
             </div>
             <p className="text-gray-600 mb-6">
@@ -128,15 +128,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail className="text-cyan-600 mt-1 mr-3 flex-shrink-0" size={18} />
-                <span className="text-gray-600">contact@daxnotech.com</span>
+                <span className="text-gray-600">vkant@gmail.com</span>
               </li>
               <li className="flex items-start">
                 <Phone className="text-cyan-600 mt-1 mr-3 flex-shrink-0" size={18} />
-                <span className="text-gray-600">+1 (555) 123-4567</span>
+                <span className="text-gray-600">+91 9876543210</span>
               </li>
               <li className="flex items-start">
                 <MapPin className="text-cyan-600 mt-1 mr-3 flex-shrink-0" size={18} />
-                <span className="text-gray-600">123 Innovation Drive, San Francisco, CA 94107</span>
+                <span className="text-gray-600">Agra, Uttar Pradesh, India</span>
               </li>
             </ul>
           </motion.div>

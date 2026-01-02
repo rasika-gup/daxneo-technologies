@@ -55,7 +55,7 @@ const Navbar = () => {
               className="rounded-lg"
             />
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
-              Daxneo
+              Daxneo Technologies
             </span>
           </Link>
 

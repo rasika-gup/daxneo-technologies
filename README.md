@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daxneo Technologies - AI-Powered Solutions Platform
+
+This is a full-stack Next.js application with authentication, admin dashboard, contact forms, and reviews system built for Daxneo Technologies.
+
+## Features
+
+- **Next.js 16** with App Router
+- **NextAuth** authentication system (email/password)
+- **Prisma ORM** with PostgreSQL database
+- **Admin dashboard** with reviews and contact query management
+- **Contact form** with email notifications
+- **Reviews system** with admin approval workflow
+- **Responsive design** with Tailwind CSS
+- **SEO optimized** with proper metadata
+- **Security features** (rate limiting, CORS, headers)
 
 ## Getting Started
 
@@ -15,6 +29,21 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Authentication Setup
+
+1. Configure your environment variables (see `AUTH_SETUP.md`)
+2. Run database migrations:
+   ```bash
+   npx prisma db push
+   ```
+3. Create an admin user by signing up and updating the role in the database
+
+## Admin Access
+
+- Register a new account at `/signup`
+- Update the user role to 'admin' in the database
+- Access the admin dashboard at `/admin`
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
