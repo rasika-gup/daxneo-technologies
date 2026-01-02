@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
 import bcrypt from 'bcrypt';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/prisma';
 import { z } from 'zod';
 
-const prisma = new PrismaClient();
+export const runtime = 'nodejs';
 
 // Define validation schema
 const signupSchema = z.object({
@@ -69,7 +69,5 @@ export async function POST(req: NextRequest) {
       JSON.stringify({ error: 'Internal server error' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }

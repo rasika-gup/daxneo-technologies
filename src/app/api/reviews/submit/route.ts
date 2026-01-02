@@ -2,9 +2,11 @@ import { NextRequest } from 'next/server';
 import prisma from '@/lib/prisma';
 import { z } from 'zod';
 
+export const runtime = 'nodejs';
+
 // Define validation schema for review submission
 const reviewSchema = z.object({
-  userId: z.string().optional(), // Optional for now, will be required when auth is implemented
+  userId: z.string().nullable(), // Nullable for unauthenticated users
   userName: z.string().min(2).max(100),
   userRole: z.string().optional(),
   company: z.string().optional(),
@@ -24,10 +26,10 @@ export async function POST(req: NextRequest) {
     // Create review in database (not approved by default)
     const review = await prisma.review.create({
       data: {
-        userId: userId || undefined, // Allow undefined for unauthenticated users initially
+        userId: userId ?? undefined, // Allow undefined for unauthenticated users
         userName,
-        userRole: userRole || undefined,
-        company: company || undefined,
+        userRole: userRole || null,
+        company: company || null,
         content,
         rating,
         approved: false, // Reviews need admin approval before being public

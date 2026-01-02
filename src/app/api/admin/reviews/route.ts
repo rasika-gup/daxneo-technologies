@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/authOptions';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/prisma';
 
-const prisma = new PrismaClient();
+export const runtime = 'nodejs';
 
 export async function GET(req: NextRequest) {
   try {
@@ -24,8 +24,6 @@ export async function GET(req: NextRequest) {
       JSON.stringify({ error: 'Internal server error' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
@@ -60,8 +58,6 @@ export async function PUT(req: NextRequest) {
       JSON.stringify({ error: 'Internal server error' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
@@ -92,7 +88,5 @@ export async function DELETE(req: NextRequest) {
       JSON.stringify({ error: 'Internal server error' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
